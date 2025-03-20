@@ -4,33 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhinav Traders</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            background-color: #FFD580;
+            background-color: #f4f4f4;
             padding: 20px;
             color: #333;
+            margin: 0;
         }
-        
-        h1 {
-    font-family: 'Playfair Display', serif;
 
-              color: #5C4033;
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #e67e22;
             font-size: 3em;
-	    margin-bottom:0px;
+            margin-bottom: 5px;
         }
+
+        .caption {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
         .container {
             max-width: 1200px;
             margin: auto;
         }
+
         .contact {
             margin-top: 30px;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background:white;
+            background: white;
         }
+
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -38,6 +52,13 @@
             gap: 15px;
             margin-top: 20px;
         }
+
+        .gallery figure {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
         .gallery img {
             width: 300px;
             height: 200px;
@@ -46,87 +67,83 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s;
         }
+
         .gallery img:hover {
             transform: scale(1.05);
         }
-        .caption{
-		font-size:20px
-	}
+
+        figcaption {
+            font-size: 18px;
+            color: #444;
+            margin-top: 8px;
+        }
+
+        .contact a {
+            color: #e67e22;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact a:hover {
+            color: #d35400;
+        }
+
+        @media (max-width: 768px) {
+            .gallery img {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Abhinav Traders</h1>
-        <span class='caption'><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>        
-        <div class="gallery">
-	<figure>
-	   <img src="Image_1.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-        <img src="Image_2.jpeg" alt="Roof 2">
-	   <FigCaption>abc</FigCaption>
-	</figure><figure>
-        <img src="Image_3.jpeg" alt="Roof 3">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-        <figure>
-        <img src="Image_4.jpeg" alt="Roof 4">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-        <img src="Image_5.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_7.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_8.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_9.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_10.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-        <figure>
-	   <img src="Image_11.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_12.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_13.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_14.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_15.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-	<figure>
-	   <img src="Image_16.jpeg" alt="Roof 1">
-	   <FigCaption>abc</FigCaption>
-	</figure>
-        </div>
-        
-        <div class="contact" id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: <strong>contact@harsharoofings.com</strong></p>
-            <p>Phone: <strong>+91 9491788389</strong></p>
-            <a href="https://www.instagram.com/accounts/login/">Instagram: @instagram.com</a>
-            <p>Address: <strong>123, Roofing Street, City, Country</strong></p>
-                    </div>
+
+<div class="container">
+    <h1>Abhinav Traders</h1>
+    <span class='caption'><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>        
+
+    <div class="gallery" id="gallery"></div>
+
+     <div class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p><i class="bi bi-envelope-fill"></i> Email: <strong>abhinavtraders1356@gmail.com</strong></p>
+        <p><i class="bi bi-telephone-fill"></i> Phone: <strong>+91 9491788389</strong></p>
+        <p><i class="bi bi-instagram"></i> Instagram: <a href="https://www.instagram.com/accounts/login/" target="_blank">@abhinavtraders1356</a></p>
+        <p><i class="bi bi-geo-alt-fill"></i> Address: <strong>123, Roofing Street, City, Country</strong></p>
     </div>
+</div>
+
+<script>
+    const images = [
+        { src: "./images/Image_1.jpeg", caption: "Puff Sheets" },
+        { src: "./images/Image_2.jpeg", caption: "Turbo Fans" },
+        { src: "./images/Image_3.jpeg", caption: "Polycorbanate Sheets" },
+        { src: "./images/Image_4.jpeg", caption: "Upvc Tiles Sheets" },
+        { src: "./images/Image_5.jpeg", caption: "Decking Sheets" },
+        { src: "./images/Image_7.jpeg", caption: "Lighting Sheet" },
+        { src: "./images/Image_8.jpeg", caption: "Kirbe Sheets" },
+        { src: "./images/Image_9.jpeg", caption: "Fiber Sheets" },
+        { src: "./images/Image_10.jpeg", caption: "Acralic Sheets" },
+        { src: "./images/Image_11.jpeg", caption: "Green Shade Net" },
+        { src: "./images/Image_12.jpeg", caption: "Flood Sheets" }
+        ];
+
+    const galleryContainer = document.getElementById("gallery");
+
+    images.forEach(image => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const caption = document.createElement("figcaption");
+
+        img.src = image.src;
+        img.alt = image.caption;
+        caption.textContent = image.caption;
+
+        figure.appendChild(img);
+        figure.appendChild(caption);
+        galleryContainer.appendChild(figure);
+    });
+</script>
+
 </body>
 </html>
