@@ -11,10 +11,9 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            text-align: center;
             background-color: #f4f4f4;
-            padding: 20px;
             color: #333;
+            padding: 20px;
             margin: 0;
         }
 
@@ -22,7 +21,8 @@
             font-family: 'Playfair Display', serif;
             color: #e67e22;
             font-size: 3em;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .caption {
@@ -30,6 +30,7 @@
             color: #555;
             margin-bottom: 30px;
             display: inline-block;
+            text-align: center;
         }
 
         .container {
@@ -43,12 +44,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background: white;
+            text-align: center;
         }
 
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
@@ -60,12 +61,13 @@
         }
 
         .gallery img {
-            width: 300px;
+            width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .gallery img:hover {
@@ -89,9 +91,16 @@
         }
 
         @media (max-width: 768px) {
-            .gallery img {
-                width: 100%;
-                height: auto;
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .caption {
+                font-size: 18px;
             }
         }
     </style>
@@ -100,11 +109,11 @@
 
 <div class="container">
     <h1>Abhinav Traders</h1>
-    <span class='caption'><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>        
+    <span class="caption"><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>        
 
     <div class="gallery" id="gallery"></div>
 
-     <div class="contact" id="contact">
+    <div class="contact" id="contact">
         <h2>Contact Us</h2>
         <p><i class="bi bi-envelope-fill"></i> Email: <strong>abhinavtraders1356@gmail.com</strong></p>
         <p><i class="bi bi-telephone-fill"></i> Phone: <strong>+91 9491788389</strong></p>
@@ -115,18 +124,18 @@
 
 <script>
     const images = [
-        { src: "./Image_1.jpeg", caption: "Puff Sheets" },
-        { src: "./Image_2.jpeg", caption: "Turbo Fans" },
-        { src: "./Image_3.jpeg", caption: "Polycorbanate Sheets" },
-        { src: "./Image_4.jpeg", caption: "Upvc Tiles Sheets" },
-        { src: "./Image_5.jpeg", caption: "Decking Sheets" },
-        { src: "./Image_7.jpeg", caption: "Lighting Sheet" },
-        { src: "./Image_8.jpeg", caption: "Kirbe Sheets" },
-        { src: "./Image_9.jpeg", caption: "Fiber Sheets" },
-        { src: "./Image_10.jpeg", caption: "Acralic Sheets" },
-        { src: "./Image_11.jpeg", caption: "Green Shade Net" },
-        { src: "./Image_12.jpeg", caption: "Flood Sheets" }
-        ];
+        { id: 1, src: "./images/Image_1.jpeg", caption: "Puff Sheets" },
+        { id: 2, src: "./images/Image_2.jpeg", caption: "Turbo Fans" },
+        { id: 3, src: "./images/Image_3.jpeg", caption: "Polycarbonate Sheets" },
+        { id: 4, src: "./images/Image_4.jpeg", caption: "UPVC Tiles Sheets" },
+        { id: 5, src: "./images/Image_5.jpeg", caption: "Decking Sheets" },
+        { id: 6, src: "./images/Image_7.jpeg", caption: "Lighting Sheet" },
+        { id: 7, src: "./images/Image_8.jpeg", caption: "Kirbe Sheets" },
+        { id: 8, src: "./images/Image_9.jpeg", caption: "Fiber Sheets" },
+        { id: 9, src: "./images/Image_10.jpeg", caption: "Acrylic Sheets" },
+        { id: 10, src: "./images/Image_11.jpeg", caption: "Green Shade Net" },
+        { id: 11, src: "./images/Image_12.jpeg", caption: "Flood Sheets" }
+    ];
 
     const galleryContainer = document.getElementById("gallery");
 
@@ -137,7 +146,22 @@
 
         img.src = image.src;
         img.alt = image.caption;
+        img.onclick = () => {
+            // Navigate to album-view.html with ID as a query parameter
+            window.location.href = `album-view.html?id=${image.id}`;
+        };
+
         caption.textContent = image.caption;
+
+        figure.appendChild(img);
+        figure.appendChild(caption);
+        galleryContainer.appendChild(figure);
+    });
+</script>
+
+</body>
+</html>
+
 
         figure.appendChild(img);
         figure.appendChild(caption);

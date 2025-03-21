@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album View</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #e67e22;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 10px 25px;
+            color: white;
+            background: #3498db;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .back-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="album-title">Album Title</h1>  <!-- Dynamic title -->
+
+    <div id="image-container" class="gallery">
+        <p>Loading...</p>
+    </div>
+
+    <a href="index.html" class="back-btn">Back to Home</a>
+</div>
+
+<script>
+    // Fetch the image ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const imageId = urlParams.get('id');
+
+    // Image data with albums
+    const albums = {
+        1: { title: "Puff Sheets", images: ["./images/Image_1.jpeg", "./images/Image_2.jpeg", "./images/Image_3.jpeg"] },
+        2: { title: "Turbo Fans", images: ["./images/Image_4.jpeg", "./images/Image_5.jpeg", "./images/Image_7.jpeg"] },
+        3: { title: "Polycarbonate", images: ["./images/Image_8.jpeg", "./images/Image_9.jpeg", "./images/Image_10.jpeg"] },
+        4: { title: "UPVC Tiles", images: ["./images/Image_11.jpeg", "./images/Image_12.jpeg", "./images/Image_1.jpeg"] },
+        5: { title: "Decking Sheets", images: ["./images/Image_2.jpeg", "./images/Image_4.jpeg", "./images/Image_5.jpeg"] },
+        6: { title: "Lighting Sheet", images: ["./images/Image_3.jpeg", "./images/Image_7.jpeg", "./images/Image_9.jpeg"] },
+        7: { title: "Kirbe Sheets", images: ["./images/Image_8.jpeg", "./images/Image_10.jpeg", "./images/Image_12.jpeg"] },
+        8: { title: "Fiber Sheets", images: ["./images/Image_5.jpeg", "./images/Image_6.jpeg", "./images/Image_7.jpeg"] },
+        9: { title: "Acrylic Sheets", images: ["./images/Image_2.jpeg", "./images/Image_3.jpeg", "./images/Image_4.jpeg"] },
+        10: { title: "Green Shade Net", images: ["./images/Image_1.jpeg", "./images/Image_6.jpeg", "./images/Image_9.jpeg"] },
+        11: { title: "Flood Sheets", images: ["./images/Image_10.jpeg", "./images/Image_11.jpeg", "./images/Image_12.jpeg"] }
+    };
+
+    const container = document.getElementById("image-container");
+    const titleElement = document.getElementById("album-title");
+
+    // Display album with multiple images
+    if (albums[imageId]) {
+        const album = albums[imageId];
+
+        // Set album title
+        titleElement.textContent = album.title;
+
+        // Display all images in the album
+        container.innerHTML = "";
+        album.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = album.title;
+            img.onclick = () => {
+                // Optionally show a full-screen view or navigate to another page
+                window.open(src, "_blank");
+            };
+            container.appendChild(img);
+        });
+    } else {
+        container.innerHTML = `<p>Album not found</p>`;
+    }
+</script>
+
+</body>
+</html>
