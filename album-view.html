@@ -56,7 +56,6 @@
             margin: 30px auto 0;
             padding: 10px 25px;
             color: white;
-            background: #3498db;
             text-decoration: none;
             border-radius: 5px;
             transition: background 0.3s;
@@ -96,7 +95,7 @@
         <p>Loading...</p>
     </div>
 
-    <a href="index.html" class="back-btn">Back to Home</a>
+    <a href="index.html" class="btn btn-primary back-btn">Back to Home</a>
 </div>
 
 <script>
@@ -135,10 +134,6 @@
             const img = document.createElement("img");
             img.src = src;
             img.alt = album.title;
-            img.onclick = () => {
-                // Optionally show a full-screen view or navigate to another page
-                window.open(src, "_blank");
-            };
             container.appendChild(img);
         });
     } else {
