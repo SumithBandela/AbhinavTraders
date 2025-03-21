@@ -15,43 +15,32 @@
             font-family: 'Forum', serif;
             background-color: #f4f4f4;
             color: #333;
-            padding: 20px;
             margin: 0;
+            padding: 0;
         }
 
-        h1 {
+        h1, h2, h3 {
             font-family: 'Cinzel', serif;
-            color: #e67e22;
-            font-size: 4rem;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-        h2{
-            font-size: 35px;
-        }
-
-        .caption {
-            font-family: 'Forum', serif;
-            font-size: 20px;
-            color: #555;
-            margin-bottom: 30px;
-            display: inline-block;
-            text-align: center;
         }
 
         .container {
             max-width: 1200px;
             margin: auto;
+            padding: 20px;
         }
 
-        .contact {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background: white;
+        h1 {
+            color: #e67e22;
+            font-size: 4rem;
             text-align: center;
+            font-weight: bold;
+        }
+
+        .caption {
+            font-size: 20px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .gallery {
@@ -59,12 +48,6 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             margin-top: 20px;
-        }
-
-        .gallery figure {
-            margin: 0;
-            padding: 0;
-            text-align: center;
         }
 
         .gallery img {
@@ -87,47 +70,90 @@
             margin-top: 8px;
         }
 
+        .contact, .about {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+
         .contact a {
-            color: #e67e22;
+            color: black;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .contact a:hover {
-            color: #d35400;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 16px;
+        }
+
+        .footer a {
+            color: #e67e22;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #f39c12;
         }
 
         @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-            }
-
             h1 {
-                font-size: 3em;
+                font-size: 2.5rem;
             }
 
-            .caption {
-                font-size: 18px;
+            .gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
+
 
 <div class="container">
     <h1>Abhinav Traders</h1>
-    <span class="caption justify-content-center align-items-center d-flex"><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>        
+    <span class="caption"><strong><i>Best Roofing Sheets Supplier at your Doorstep</i></strong></span>
 
+    <!-- Gallery -->
     <div class="gallery" id="gallery"></div>
+    <!-- About Section -->
+    <div id="about" class="about">
+        <h2>About Us</h2>
+        <p>
+            At <strong>Abhinav Traders</strong>, we specialize in providing high-quality roofing sheets and industrial materials. 
+            With a commitment to excellence, we offer a wide range of products, including Puff Sheets, Turbo Fans, Polycarbonate Sheets, and more. 
+            Our goal is to deliver durable and cost-effective solutions right to your doorstep.
+        </p>
+    </div>
 
+    <!-- Contact Section -->
     <div class="contact" id="contact">
-        <h2 class="fw-bold">Contact Us</h2>
-        <p><i class="bi bi-envelope-fill"></i> Email: <strong>abhinavtraders1356@gmail.com</strong></p>
-        <p><i class="bi bi-telephone-fill"></i> Phone: <strong>+91 9491788389</strong></p>
+        <h2>Contact Us</h2>
+        <p><i class="bi bi-envelope-fill"></i> Email: <a href="mailto:abhinavtraders1356@gmail.com">abhinavtraders1356@gmail.com</a></p>
+        <p><i class="bi bi-telephone-fill"></i> Phone: +91 949 178 8389</p>
         <p><i class="bi bi-instagram"></i> Instagram: <a href="https://www.instagram.com/abhinavtraders1356" target="_blank">@abhinavtraders1356</a></p>
-        <p><i class="bi bi-geo-alt-fill"></i> Address: <strong>Secunderabad,Telangana</strong></p>
+        <p><i class="bi bi-geo-alt-fill"></i> Address: <strong>Secunderabad, Telangana</strong></p>
     </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2025 Abhinav Traders. All rights reserved.</p>
+    <p>Follow us on 
+        <a href="https://www.instagram.com/abhinavtraders1356" target="_blank"><i class="bi bi-instagram"></i> Instagram</a> |
+        <a href="mailto:abhinavtraders1356@gmail.com"><i class="bi bi-envelope-fill"></i> Email Us</a>
+    </p>
+</footer>
 
 <script>
     const images = [
@@ -154,7 +180,6 @@
         img.src = image.src;
         img.alt = image.caption;
         img.onclick = () => {
-            // Navigate to album-view.html with ID as a query parameter
             window.location.href = `album-view.html?id=${image.id}`;
         };
 
@@ -165,6 +190,8 @@
         galleryContainer.appendChild(figure);
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
