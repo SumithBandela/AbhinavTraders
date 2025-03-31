@@ -5,37 +5,25 @@ const sharp = require("sharp");
 const imageDir = "D:/AbhinavTraders/AbhinavTraders/images";
 const archiveDir = "D:/AbhinavTraders/AbhinavTraders/archive";
 const outputDir = "D:/AbhinavTraders/AbhinavTraders/output";
+const watermarkPath = "D:/AbhinavTraders/AbhinavTraders/watermark.png";  // Watermark image path
 
 // Ensure archive and output directories exist
 if (!fs.existsSync(archiveDir)) fs.mkdirSync(archiveDir);
 if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
 
-async function watermarkImage(imagePath, outputPath, watermarkText) {
+async function watermarkImage(imagePath, outputPath, watermarkPath) {
     try {
         const image = sharp(imagePath);
         const metadata = await image.metadata();
 
-        // Watermark text settings (centered with light opacity)
-        const fontSize = Math.floor(metadata.width * 0.08);  // 8% of image width
+        // Resize watermark to 30% of image width
+        const watermark = await sharp(watermarkPath)
+            .resize(Math.floor(metadata.width * 0.3)) 
+            .toBuffer();
 
-        const svgWatermark = `
-        <svg width="${metadata.width}" height="${metadata.height}">
-            <text x="50%" y="50%"
-                font-family="Arial"
-                font-size="${fontSize}"
-                fill="white"
-                stroke="black"
-                stroke-width="1"
-                text-anchor="middle"
-                alignment-baseline="middle"
-                opacity="0.3">  <!-- Light opacity -->
-                ${watermarkText}
-            </text>
-        </svg>`;
-
-        // Apply watermark
+        // Apply watermark in the center
         await image
-            .composite([{ input: Buffer.from(svgWatermark), gravity: "center" }])
+            .composite([{ input: watermark, gravity: "center" }])
             .toFile(outputPath);
 
         console.log(`✅ Watermarked: ${path.basename(outputPath)}`);
@@ -66,7 +54,7 @@ async function processImages() {
         const outputPath = path.join(outputDir, newFileName);
         const archivePath = path.join(archiveDir, file);
 
-        const success = await watermarkImage(imagePath, outputPath, "Abhinav Traders");
+        const success = await watermarkImage(imagePath, outputPath, watermarkPath);
 
         if (success) {
             // Move the original image to the archive
